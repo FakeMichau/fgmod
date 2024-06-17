@@ -32,6 +32,7 @@ innoextract-1.9-linux/bin/amd64/innoextract dlss-enabler-setup-2.90.800.0-b15.ex
 mv app/* .
 rm -r app
 cp -f NVIDIA-Linux-x86_64-555.52.04/nvngx.dll _nvngx.dll
+cp -f NVIDIA-Linux-x86_64-555.52.04/LICENSE LICENSE
 chmod +r _nvngx.dll
 rm -rf innoextract-1.9-linux NVIDIA-Linux-x86_64-555.52.04 innoextract-1.9-linux.tar.xz dlss-enabler-setup-2.90.800.0-b15.exe NVIDIA-Linux-x86_64-555.52.04.run
 
