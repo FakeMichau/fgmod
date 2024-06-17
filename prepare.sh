@@ -11,14 +11,13 @@ if [[ -d "$mod_path" ]]; then
         exit 1
     fi
 fi
-mkdir "$mod_path"
-cp fgmod.sh "$mod_path/fgmod" || exit 1
-cd "$mod_path"
+mkdir "$mod_path" && cd "$mod_path" || exit 1
 
 curl -OL https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/2.90.800.0-beta15/dlss-enabler-setup-2.90.800.0-b15.exe
 curl -OL https://download.nvidia.com/XFree86/Linux-x86_64/555.52.04/NVIDIA-Linux-x86_64-555.52.04.run
 curl -OL https://raw.githubusercontent.com/mozilla/fxc2/master/dll/d3dcompiler_47.dll
 curl -OL https://constexpr.org/innoextract/files/innoextract-1.9-linux.tar.xz
+curl -o fgmod -L https://raw.githubusercontent.com/FakeMichau/fgmod/main/fgmod.sh
 
 [[ ! -f dlss-enabler-setup-2.90.800.0-b15.exe ]] || [[ ! -f NVIDIA-Linux-x86_64-555.52.04.run ]] || [[ ! -f d3dcompiler_47.dll ]] || [[ ! -f innoextract-1.9-linux.tar.xz ]] && exit 2
 
