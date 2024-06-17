@@ -40,5 +40,3 @@ sed -i 's/\/usr\/share/$HOME/' fgmod
 
 echo All done!
 echo Add this to launch options: "$HOME/fgmod/fgmod" %COMMAND%
-
-# TODO: print command to add
