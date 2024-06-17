@@ -37,6 +37,7 @@ chmod +r _nvngx.dll
 rm -rf innoextract-1.9-linux NVIDIA-Linux-x86_64-555.52.04 innoextract-1.9-linux.tar.xz dlss-enabler-setup-2.90.800.0-b15.exe NVIDIA-Linux-x86_64-555.52.04.run
 
 sed -i 's/\/usr\/share/$HOME/' fgmod
+chmod +x fgmod
 
 echo All done!
 echo Add this to launch options: "$HOME/fgmod/fgmod" %COMMAND%
