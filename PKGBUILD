@@ -1,9 +1,10 @@
 pkgname=fgmod
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Makes \"DLSS\" Enabler easy to use on Linux with Proton"
 arch=('x86_64')
 license=('custom')
+depends=('zenity')
 makedepends=('innoextract')
 _nvidiaver=555.52.04
 source=("https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/2.90.800.0-beta15/dlss-enabler-setup-2.90.800.0-b15.exe"

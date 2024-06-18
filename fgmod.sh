@@ -7,8 +7,8 @@ if [ "$#" -lt 1 ]; then
     exit 1
 fi
 
-# Two args means the command is ran standalone
-if [[ $# -eq 2 ]]; then
+# One arg means the command is ran standalone
+if [[ $# -eq 1 ]]; then
   if [[ "$1" == *.exe ]]; then
     exe_folder_path=$(dirname "$1")
   else
@@ -33,6 +33,12 @@ else
 fi
 
 if [[ -n $exe_folder_path ]]; then
+  if [[ ! -w $exe_folder_path ]]; then
+    echo No write permission to the game folder!
+    zenity --error --text "No write permission to the game folder!"
+    exit 1
+  fi
+  # TODO: fail on copy fail?
   # DLSS Enabler
   cp -f "$mod_path/version.dll" "$exe_folder_path/dlss-enabler.dll"
   cp -f "$mod_path/dxgi.dll" "$exe_folder_path"
@@ -53,7 +59,7 @@ if [[ -n $exe_folder_path ]]; then
 
   # Execute the original command
   export WINEDLLOVERRIDES="$WINEDLLOVERRIDES,dxgi=n,b"
-  [[ $# -gt 2 ]] && env "$@"
+  [[ $# -gt 1 ]] && env "$@"
 else
   echo "Path doesn't exist"
 fi
