@@ -1,5 +1,5 @@
 pkgname=fgmod
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Makes \"DLSS\" Enabler easy to use on Linux with Proton"
 arch=('x86_64')
@@ -29,7 +29,7 @@ prepare() {
 package() {
     install -d "$pkgdir"/usr/share/$pkgname
     cp -a app/* "$pkgdir"/usr/share/$pkgname
-    cp -a d3dcompiler_47.dll "$pkgdir"/usr/share/$pkgname
+    cp d3dcompiler_47.dll "$pkgdir"/usr/share/$pkgname
 
     rm "$pkgdir"/usr/share/$pkgname/_nvngx.dll
     cp "NVIDIA-Linux-x86_64-$_nvidiaver/nvngx.dll" "$pkgdir"/usr/share/$pkgname/_nvngx.dll
