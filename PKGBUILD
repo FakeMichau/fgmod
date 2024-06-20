@@ -1,5 +1,5 @@
 pkgname=fgmod
-pkgver=1.1.3
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Makes \"DLSS\" Enabler easy to use on Linux with Proton"
 arch=('x86_64')
@@ -7,12 +7,11 @@ license=('custom')
 depends=('zenity')
 makedepends=('innoextract')
 _nvidiaver=555.52.04
-_enablerver=2.90.800.0-beta17
-source=("https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/$_enablerver/dlss-enabler-setup-$_enablerver.exe"
+source=("https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/2.90.800.0-beta15/dlss-enabler-setup-2.90.800.0-b15.exe"
         "https://download.nvidia.com/XFree86/Linux-x86_64/$_nvidiaver/NVIDIA-Linux-x86_64-$_nvidiaver.run"
         "https://raw.githubusercontent.com/mozilla/fxc2/master/dll/d3dcompiler_47.dll" # from winetricks
         "fgmod.sh")
-sha256sums=('867fbd142f2ee004bc85a6d3e9aa0dbd61cf0344e760f573cc7273cdb179b022'
+sha256sums=('cbf05b8af7b24d6cc3b493fb91953e12bc8e6f14ec1a8a5bef08e4a1b285bdb6'
             '9d53ae6dbef32ae95786ec7d02bb944d5050c1c70516e6065ab5356626a44402'
             '4432bbd1a390874f3f0a503d45cc48d346abc3a8c0213c289f4b615bf0ee84f3'
             'SKIP')
@@ -21,10 +20,10 @@ _moddir=usr/share/${pkgname}
 
 prepare() {
     chmod +x NVIDIA-Linux-x86_64-$_nvidiaver.run
-    rm -rf NVIDIA-Linux-x86_64-$_nvidiaver
+    rm -rf NVIDIA-Linux-x86_64-555.52.04
     ./NVIDIA-Linux-x86_64-$_nvidiaver.run -x
 
-    innoextract dlss-enabler-setup-$_enablerver.exe
+    innoextract dlss-enabler-setup-2.90.800.0-b15.exe
 }
 
 package() {
