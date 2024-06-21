@@ -57,4 +57,5 @@ chmod +x fgmod
 chmod +x fgmod-uninstaller.sh
 
 echo All done!
-echo Add this to launch options: "$PWD/fgmod" %COMMAND%
+echo For Steam, add this to the launch options: "$PWD/fgmod" %COMMAND%
+echo For Heroic, add this as a new wrapper: "$PWD/fgmod"
