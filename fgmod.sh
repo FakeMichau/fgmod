@@ -61,6 +61,8 @@ if [[ -n $exe_folder_path ]]; then
   cp -n "$mod_path/d3dcompiler_47.dll" "$exe_folder_path"
   cp -n "$mod_path/nvngx.ini" "$exe_folder_path"
 
+  cp -f "$mod_path/fgmod-uninstaller.sh" "$exe_folder_path"
+
   # Execute the original command
   export WINEDLLOVERRIDES="$WINEDLLOVERRIDES,dxgi=n,b"
   [[ $# -gt 1 ]] && env "$@"

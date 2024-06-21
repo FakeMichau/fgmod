@@ -23,11 +23,12 @@ if [[ ! $standalone -eq 0 ]]; then
 fi
 cd "$mod_path" || exit 1
 
-curl -OL https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/2.90.800.0-beta15/dlss-enabler-setup-2.90.800.0-b15.exe
-curl -OL https://download.nvidia.com/XFree86/Linux-x86_64/$nvidiaver/NVIDIA-Linux-x86_64-$nvidiaver.run
-curl -OL https://raw.githubusercontent.com/mozilla/fxc2/master/dll/d3dcompiler_47.dll
-curl -OL https://constexpr.org/innoextract/files/innoextract-1.9-linux.tar.xz
-[[ $standalone -eq 0 ]] && curl -o fgmod -L https://raw.githubusercontent.com/FakeMichau/fgmod/main/fgmod.sh
+curl -OLf https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/2.90.800.0-beta15/dlss-enabler-setup-2.90.800.0-b15.exe
+curl -OLf https://download.nvidia.com/XFree86/Linux-x86_64/$nvidiaver/NVIDIA-Linux-x86_64-$nvidiaver.run
+curl -OLf https://raw.githubusercontent.com/mozilla/fxc2/master/dll/d3dcompiler_47.dll
+curl -OLf https://constexpr.org/innoextract/files/innoextract-1.9-linux.tar.xz
+[[ $standalone -eq 0 ]] && curl -o fgmod -Lf https://raw.githubusercontent.com/FakeMichau/fgmod/main/fgmod.sh
+[[ $standalone -eq 0 ]] && curl -OL https://raw.githubusercontent.com/FakeMichau/fgmod/main/fgmod-uninstaller.sh
 
 [[ ! -f dlss-enabler-setup-2.90.800.0-b15.exe ]] || 
 [[ ! -f NVIDIA-Linux-x86_64-$nvidiaver.run ]] || 
@@ -52,6 +53,8 @@ rm -rf innoextract-1.9-linux NVIDIA-Linux-x86_64-$nvidiaver innoextract-1.9-linu
 
 sed -i 's|mod_path="/usr/share/fgmod"|mod_path="'"$mod_path"'"|g' fgmod
 chmod +x fgmod
+
+chmod +x fgmod-uninstaller.sh
 
 echo All done!
 echo Add this to launch options: "$PWD/fgmod" %COMMAND%
