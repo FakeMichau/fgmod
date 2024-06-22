@@ -64,6 +64,7 @@ if [[ -n $exe_folder_path ]]; then
   cp -f "$mod_path/fgmod-uninstaller.sh" "$exe_folder_path"
 
   # Execute the original command
+  export SteamDeck=0
   export WINEDLLOVERRIDES="$WINEDLLOVERRIDES,dxgi=n,b"
   [[ $# -gt 1 ]] && env "$@"
 else
