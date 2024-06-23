@@ -21,6 +21,7 @@ fi
 mkdir "$mod_path"
 if [[ ! $standalone -eq 0 ]]; then
     [[ -f fgmod.sh ]] && cp fgmod.sh "$mod_path/fgmod" || exit 1
+    [[ -f fgmod-uninstaller.sh ]] && cp fgmod-uninstaller.sh "$mod_path" || exit 1
 fi
 cd "$mod_path" || exit 1
 
@@ -35,7 +36,8 @@ curl -OLf https://constexpr.org/innoextract/files/innoextract-1.9-linux.tar.xz
 [[ ! -f NVIDIA-Linux-x86_64-$nvidiaver.run ]] || 
 [[ ! -f d3dcompiler_47.dll ]] || 
 [[ ! -f innoextract-1.9-linux.tar.xz ]] || 
-[[ ! -f fgmod ]] && exit 1
+[[ ! -f fgmod ]] || 
+[[ ! -f fgmod-uninstaller.sh ]] && exit 1
 
 # Extract files
 chmod +x NVIDIA-Linux-x86_64-$nvidiaver.run
