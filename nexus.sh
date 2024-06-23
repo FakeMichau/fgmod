@@ -1,0 +1,8 @@
+#!/bin/bash
+
+rm -rf nexus
+mkdir nexus && cd nexus || exit 1
+cp ../fgmod.sh ../fgmod-uninstaller.sh ../prepare.sh .
+sed -i 's|standalone=0|standalone=1|g' prepare.sh
+7z a -t7z ../fgmod.7z fgmod.sh fgmod-uninstaller.sh prepare.sh
+rm -rf ../nexus
