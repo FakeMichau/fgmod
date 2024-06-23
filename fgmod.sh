@@ -59,7 +59,7 @@ if [[ -d $exe_folder_path ]]; then
   fi
   # TODO: fail on copy fail?
   # DLSS Enabler
-  cp -f "$mod_path/version.dll" "$exe_folder_path/dlss-enabler.dll"
+  cp -f "$mod_path/dlss-enabler.dll" "$exe_folder_path"
   cp -f "$mod_path/dxgi.dll" "$exe_folder_path"
   cp -f "$mod_path/nvapi64-proxy.dll" "$exe_folder_path"
   cp -f "$mod_path/nvngx-wrapper.dll" "$exe_folder_path"

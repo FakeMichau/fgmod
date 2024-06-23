@@ -53,6 +53,7 @@ cp -f NVIDIA-Linux-x86_64-$nvidiaver/nvngx.dll _nvngx.dll
 cp -f NVIDIA-Linux-x86_64-$nvidiaver/LICENSE LICENSE
 chmod +r _nvngx.dll
 rm -rf innoextract-1.9-linux NVIDIA-Linux-x86_64-$nvidiaver innoextract-1.9-linux.tar.xz dlss-enabler-setup-$enablerver.exe NVIDIA-Linux-x86_64-$nvidiaver.run
+rm -rf plugins dlss-enabler-fsr.dll dlss-enabler-xess.dll version.dll winmm.dll
 
 sed -i 's|mod_path="/usr/share/fgmod"|mod_path="'"$mod_path"'"|g' fgmod
 chmod +x fgmod
