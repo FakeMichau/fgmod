@@ -58,6 +58,13 @@ if [[ -d $exe_folder_path ]]; then
     error_exit "No write permission to the game folder!"
   fi
   # TODO: fail on copy fail?
+
+  # Assume that the mod is not installed when dlssg_to_fsr3_amd_is_better.dll is not present
+  if [[ ! -f "$exe_folder_path/dlssg_to_fsr3_amd_is_better.dll" ]]; then
+    [[ ! -f "$exe_folder_path/libxess.dll.b" ]]        && mv -f "$exe_folder_path/libxess.dll"        "$exe_folder_path/libxess.dll.b"
+    [[ ! -f "$exe_folder_path/d3dcompiler_47.dll.b" ]] && mv -f "$exe_folder_path/d3dcompiler_47.dll" "$exe_folder_path/d3dcompiler_47.dll.b"
+  fi
+
   # DLSS Enabler
   cp -f "$mod_path/dlss-enabler.dll" "$exe_folder_path"
   cp -f "$mod_path/dxgi.dll" "$exe_folder_path"

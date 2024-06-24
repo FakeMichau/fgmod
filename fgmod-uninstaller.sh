@@ -15,10 +15,12 @@ else
     rm "dlssg_to_fsr3.log"
     rm "dlss-enabler-upscaler.dll"
     rm "nvngx.ini"
+    rm "libxess.dll"
+    rm "d3dcompiler_47.dll"
 
-    # Can't remove those because the game might've shipped with those
-    # TODO: add a mark to them during installation
-    # rm "libxess.dll" "d3dcompiler_47.dll"
+    # Restore files the game might've shipped with
+    mv -f "libxess.dll.b" "libxess.dll"
+    mv -f "d3dcompiler_47.dll.b" "d3dcompiler_47.dll"
 
     echo "fgmod removed from this game"
     echo "Don't forget to remove /home/USERNAME/fgmod/fgmod from the launch options!"
