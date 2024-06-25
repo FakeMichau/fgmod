@@ -13,7 +13,7 @@ source=("https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/$_
         "https://raw.githubusercontent.com/mozilla/fxc2/master/dll/d3dcompiler_47.dll" # from winetricks
         "fgmod.sh"
         "fgmod-uninstaller.sh")
-sha256sums=('0cc31d027f158939b6c03b4f76fd702117ffa049037cdb329466be607e1970d6'
+sha256sums=('056f455ca6b2d11d7cbf6fea5f809e6e42e9af643cf00f7253ab54a2a20531a3'
             '9d53ae6dbef32ae95786ec7d02bb944d5050c1c70516e6065ab5356626a44402'
             '4432bbd1a390874f3f0a503d45cc48d346abc3a8c0213c289f4b615bf0ee84f3'
             'SKIP'
