@@ -1,5 +1,5 @@
 pkgname=fgmod
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Makes \"DLSS\" Enabler easy to use on Linux with Proton"
 arch=('x86_64')
@@ -19,7 +19,7 @@ sha256sums=('7ce98f866e8c445f9a6a4587f548387e21c207e17b93d1ce285c3caf0941436f'
             'SKIP'
             'SKIP')
 
-_moddir=usr/share/${pkgname}
+_moddir=usr/share/$pkgname
 
 prepare() {
     chmod +x NVIDIA-Linux-x86_64-$_nvidiaver.run
@@ -30,22 +30,26 @@ prepare() {
 }
 
 package() {
-    install -d "$pkgdir"/usr/share/$pkgname
-    cp -a app/* "$pkgdir"/usr/share/$pkgname
-    cp d3dcompiler_47.dll "$pkgdir"/usr/share/$pkgname
+    install -d "$pkgdir/$_moddir"
+    cp -a app/* "$pkgdir/$_moddir"
+    cp d3dcompiler_47.dll "$pkgdir/$_moddir"
 
-    rm "$pkgdir"/usr/share/$pkgname/_nvngx.dll
-    cp "NVIDIA-Linux-x86_64-$_nvidiaver/nvngx.dll" "$pkgdir"/usr/share/$pkgname/_nvngx.dll
-    chmod +r "$pkgdir"/usr/share/$pkgname/_nvngx.dll
+    rm "$pkgdir/$_moddir/_nvngx.dll"
+    cp "NVIDIA-Linux-x86_64-$_nvidiaver/nvngx.dll" "$pkgdir/$_moddir/_nvngx.dll"
+    chmod +r "$pkgdir/$_moddir/_nvngx.dll"
     
-    cp "fgmod.sh" "$pkgdir"/usr/share/$pkgname/
-    cp "fgmod-uninstaller.sh" "$pkgdir"/usr/share/$pkgname/
+    cp "fgmod.sh" "$pkgdir/$_moddir/"
+    cp "fgmod-uninstaller.sh" "$pkgdir/$_moddir/"
 
-    install -d "$pkgdir"/usr/bin
-    ln -s /usr/share/$pkgname/fgmod.sh "$pkgdir"/usr/bin/$pkgname
+    install -d "$pkgdir/usr/bin"
+    ln -s "/$_moddir/fgmod.sh" "$pkgdir/usr/bin/$pkgname"
 
     # Licenses
-    install -Dm644 "NVIDIA-Linux-x86_64-$_nvidiaver/LICENSE" "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-    install -Dm644 "app/LICENSE (DLSSG to FSR3 mod).txt" "$pkgdir"/usr/share/licenses/$pkgname/"LICENSE (DLSSG to FSR3 mod).txt"
-    install -Dm644 "app/XESS LICENSE.pdf" "$pkgdir"/usr/share/licenses/$pkgname/"XESS LICENSE.pdf"
+    install -Dm644 "NVIDIA-Linux-x86_64-$_nvidiaver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "app/LICENSE (DLSSG to FSR3 mod).txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE (DLSSG to FSR3 mod).txt"
+    install -Dm644 "app/XESS LICENSE.pdf" "$pkgdir/usr/share/licenses/$pkgname/XESS LICENSE.pdf"
+
+    echo All done!
+    echo For Steam, add this to the launch options: fgmod %COMMAND%
+    echo For Heroic, add this as a new wrapper: fgmod
 }
