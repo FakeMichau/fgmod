@@ -2,7 +2,7 @@
 
 mod_path="$HOME/fgmod"
 nvidiaver=555.52.04
-enablerver=2.90.800.0-beta19
+enablerver=2.90.800.0-beta20
 # standalone makes use of fgmod.sh and fgmod-uninstaller.sh from the working directory
 # To make it fully standalone with files being installed to pwd, set standalone=1 and mod_path=.
 standalone=0

@@ -1,5 +1,5 @@
 pkgname=fgmod
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="Makes \"DLSS\" Enabler easy to use on Linux with Proton"
 arch=('x86_64')
