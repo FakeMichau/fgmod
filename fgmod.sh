@@ -57,38 +57,42 @@ if [[ -d $exe_folder_path ]]; then
   if [[ ! -w $exe_folder_path ]]; then
     error_exit "No write permission to the game folder!"
   fi
-  # TODO: fail on copy fail?
 
   # Assume that the mod is not installed when dlssg_to_fsr3_amd_is_better.dll is not present
   if [[ ! -f "$exe_folder_path/dlssg_to_fsr3_amd_is_better.dll" ]]; then
-    [[ ! -f "$exe_folder_path/libxess.dll.b" ]]        && mv -f "$exe_folder_path/libxess.dll"        "$exe_folder_path/libxess.dll.b"
-    [[ ! -f "$exe_folder_path/d3dcompiler_47.dll.b" ]] && mv -f "$exe_folder_path/d3dcompiler_47.dll" "$exe_folder_path/d3dcompiler_47.dll.b"
+    [[ ! -f "$exe_folder_path/libxess.dll.b" ]]        && mv -f "$exe_folder_path/libxess.dll"        "$exe_folder_path/libxess.dll.b"        2>/dev/null
+    [[ ! -f "$exe_folder_path/d3dcompiler_47.dll.b" ]] && mv -f "$exe_folder_path/d3dcompiler_47.dll" "$exe_folder_path/d3dcompiler_47.dll.b" 2>/dev/null
   fi
 
-  # DLSS Enabler
-  cp -f "$mod_path/dlss-enabler.dll" "$exe_folder_path"
-  cp -f "$mod_path/dxgi.dll" "$exe_folder_path"
-  cp -f "$mod_path/nvapi64-proxy.dll" "$exe_folder_path"
-  cp -f "$mod_path/nvngx-wrapper.dll" "$exe_folder_path"
+  cp -f "$mod_path/fgmod-uninstaller.sh" "$exe_folder_path" ||
+  error_exit "Couldn't copy the uninstaller!"
 
-  # Nvidia's dll
-  cp -f "$mod_path/_nvngx.dll" "$exe_folder_path"
+  cp -f "$mod_path/dlss-enabler.dll"  "$exe_folder_path" &&
+  cp -f "$mod_path/dxgi.dll"          "$exe_folder_path" &&
+  cp -f "$mod_path/nvapi64-proxy.dll" "$exe_folder_path" &&
+  cp -f "$mod_path/nvngx-wrapper.dll" "$exe_folder_path" ||
+  error_exit "Couldn't copy DLSS Enabler files!"
 
-  # dlssg-to-fsr3
-  cp -f "$mod_path/dlssg_to_fsr3_amd_is_better.dll" "$exe_folder_path"
+  cp -f "$mod_path/_nvngx.dll" "$exe_folder_path" ||
+  error_exit "Couldn't copy _nvngx.dll!"
 
-  # Optiscaler
-  cp -f "$mod_path/dlss-enabler-upscaler.dll" "$exe_folder_path"
-  cp -f "$mod_path/libxess.dll" "$exe_folder_path"
-  cp -n "$mod_path/d3dcompiler_47.dll" "$exe_folder_path"
-  cp -n "$mod_path/nvngx.ini" "$exe_folder_path"
+  cp -f "$mod_path/dlssg_to_fsr3_amd_is_better.dll" "$exe_folder_path" ||
+  error_exit "Couldn't copy dlssg-to-fsr3!"
 
-  cp -f "$mod_path/fgmod-uninstaller.sh" "$exe_folder_path"
+  cp -f "$mod_path/dlss-enabler-upscaler.dll" "$exe_folder_path" &&
+  cp -f "$mod_path/libxess.dll"               "$exe_folder_path" &&
+  cp -n "$mod_path/d3dcompiler_47.dll"        "$exe_folder_path" &&
+  cp -n "$mod_path/nvngx.ini"                 "$exe_folder_path" ||
+  error_exit "Couldn't copy Optiscaler files!"
 else
   error_exit "Path doesn't exist!"
 fi
 
-# Execute the original command
-export SteamDeck=0
-export WINEDLLOVERRIDES="$WINEDLLOVERRIDES,dxgi=n,b"
-[[ $# -gt 1 ]] && env "$@"
+if [[ $# -gt 1 ]]; then
+  # Execute the original command
+  export SteamDeck=0
+  export WINEDLLOVERRIDES="$WINEDLLOVERRIDES,dxgi=n,b"
+  "$@"
+else
+  echo Done!
+fi
