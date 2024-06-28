@@ -79,11 +79,11 @@ if [[ -d $exe_folder_path ]]; then
   cp -f "$mod_path/dlssg_to_fsr3_amd_is_better.dll" "$exe_folder_path" ||
   error_exit "Couldn't copy dlssg-to-fsr3!"
 
-  cp -f "$mod_path/dlss-enabler-upscaler.dll" "$exe_folder_path" &&
-  cp -f "$mod_path/libxess.dll"               "$exe_folder_path" &&
-  cp -n "$mod_path/d3dcompiler_47.dll"        "$exe_folder_path" &&
-  cp -n "$mod_path/nvngx.ini"                 "$exe_folder_path" ||
-  error_exit "Couldn't copy Optiscaler files!"
+  cp -f "$mod_path/dlss-enabler-upscaler.dll" "$exe_folder_path"
+  cp -f "$mod_path/libxess.dll"               "$exe_folder_path"
+  cp -n "$mod_path/d3dcompiler_47.dll"        "$exe_folder_path"
+  cp -n "$mod_path/nvngx.ini"                 "$exe_folder_path"
+  # error_exit "Couldn't copy Optiscaler files!"
 else
   error_exit "Path doesn't exist!"
 fi
