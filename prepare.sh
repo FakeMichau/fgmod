@@ -8,7 +8,7 @@ enablerver=2.90.802.0
 standalone=0
 
 if [[ -d "$mod_path" ]] && [[ ! $mod_path == . ]]; then
-    read -p "$mod_path already exists, override the old version? [y/Y] " -n 1 -r </dev/tty
+    read -p "$mod_path already exists, override the old version? [y/N] " -n 1 -r </dev/tty
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         rm -r "$mod_path"
