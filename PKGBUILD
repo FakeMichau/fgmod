@@ -7,13 +7,13 @@ license=('custom')
 depends=('zenity')
 makedepends=('innoextract')
 _nvidiaver=555.52.04
-_enablerver=2.90.802.0
+_enablerver=3.00.000.0
 source=("https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/$_enablerver/dlss-enabler-setup-$_enablerver.exe"
         "https://download.nvidia.com/XFree86/Linux-x86_64/$_nvidiaver/NVIDIA-Linux-x86_64-$_nvidiaver.run"
         "https://raw.githubusercontent.com/mozilla/fxc2/master/dll/d3dcompiler_47.dll" # from winetricks
         "fgmod.sh"
         "fgmod-uninstaller.sh")
-sha256sums=('69706c6fa45c7600dae526d3ad8f3e7452f3a61573cd7ac0bceecb757ac1d7ab'
+sha256sums=('48cddf25dbf60aff0144fa3c182b14ce4d7e2055c96f31704752698bb4a4f454'
             '9d53ae6dbef32ae95786ec7d02bb944d5050c1c70516e6065ab5356626a44402'
             '4432bbd1a390874f3f0a503d45cc48d346abc3a8c0213c289f4b615bf0ee84f3'
             'SKIP'

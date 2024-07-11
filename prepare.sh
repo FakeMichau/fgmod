@@ -2,10 +2,10 @@
 
 mod_path="$HOME/fgmod"
 nvidiaver=555.52.04
-enablerver=2.90.802.0
+enablerver=3.00.000.0
 # standalone makes use of fgmod.sh and fgmod-uninstaller.sh from the working directory
 # To make it fully standalone with files being installed to pwd, set standalone=1 and mod_path=.
-standalone=0
+standalone=1
 
 if [[ -d "$mod_path" ]] && [[ ! $mod_path == . ]]; then
     read -p "$mod_path already exists, override the old version? [y/N] " -n 1 -r </dev/tty
