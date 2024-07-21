@@ -58,10 +58,15 @@ if [[ -d $exe_folder_path ]]; then
     error_exit "No write permission to the game folder!"
   fi
 
+  original_dlls=("libxess.dll" "d3dcompiler_47.dll" "amd_fidelityfx_dx12.dll" "amd_fidelityfx_vk.dll")
+
   # Assume that the mod is not installed when dlssg_to_fsr3_amd_is_better.dll is not present
   if [[ ! -f "$exe_folder_path/dlssg_to_fsr3_amd_is_better.dll" ]]; then
-    [[ ! -f "$exe_folder_path/libxess.dll.b" ]]        && mv -f "$exe_folder_path/libxess.dll"        "$exe_folder_path/libxess.dll.b"        2>/dev/null
-    [[ ! -f "$exe_folder_path/d3dcompiler_47.dll.b" ]] && mv -f "$exe_folder_path/d3dcompiler_47.dll" "$exe_folder_path/d3dcompiler_47.dll.b" 2>/dev/null
+    for dll in "${original_dlls[@]}"; do
+      if [[ ! -f "$exe_folder_path/${dll}.b" ]]; then
+        mv -f "$exe_folder_path/$dll" "$exe_folder_path/${dll}.b" 2>/dev/null
+      fi
+    done
   fi
 
   cp -f "$mod_path/fgmod-uninstaller.sh" "$exe_folder_path" ||
@@ -76,12 +81,15 @@ if [[ -d $exe_folder_path ]]; then
   cp -f "$mod_path/_nvngx.dll" "$exe_folder_path" ||
   error_exit "Couldn't copy _nvngx.dll!"
 
-  cp -f "$mod_path/dlssg_to_fsr3_amd_is_better.dll" "$exe_folder_path" ||
+  cp -f "$mod_path/dlssg_to_fsr3_amd_is_better.dll"     "$exe_folder_path" &&
+  cp -f "$mod_path/dlssg_to_fsr3_amd_is_better-3.0.dll" "$exe_folder_path" ||
   error_exit "Couldn't copy dlssg-to-fsr3!"
 
   cp -f "$mod_path/dlss-enabler-upscaler.dll" "$exe_folder_path"
+  cp -f "$mod_path/amd_fidelityfx_dx12.dll"   "$exe_folder_path"
+  cp -f "$mod_path/amd_fidelityfx_vk.dll"     "$exe_folder_path"
   cp -f "$mod_path/libxess.dll"               "$exe_folder_path"
-  cp -n "$mod_path/d3dcompiler_47.dll"        "$exe_folder_path"
+  cp -f "$mod_path/d3dcompiler_47.dll"        "$exe_folder_path"
   cp -n "$mod_path/nvngx.ini"                 "$exe_folder_path"
   # error_exit "Couldn't copy Optiscaler files!"
 else
