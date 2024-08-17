@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 mod_path="/usr/share/fgmod"
 
@@ -8,14 +8,14 @@ else
     rm "dlss-enabler.dll"
     rm "dlss-enabler.log"
     rm "dxgi.dll"
-    rm "nvapi64-proxy.dll" 
+    rm "nvapi64-proxy.dll" 2>/dev/null
     rm "nvngx-wrapper.dll"
     rm "_nvngx.dll"
     rm "dlssg_to_fsr3_amd_is_better.dll"
     rm "dlssg_to_fsr3_amd_is_better-3.0.dll"
     rm "dlssg_to_fsr3.log"
     rm "dlss-enabler-upscaler.dll"
-    rm "Optiscaler.log" 2>/dev/null
+    rm "OptiScaler.log" 2>/dev/null
     rm "nvngx.ini"
     rm "libxess.dll"
     rm "d3dcompiler_47.dll"

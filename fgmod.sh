@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 error_exit() {
   echo "$1"
@@ -74,9 +74,10 @@ if [[ -d $exe_folder_path ]]; then
 
   cp -f "$mod_path/dlss-enabler.dll"  "$exe_folder_path" &&
   cp -f "$mod_path/dxgi.dll"          "$exe_folder_path" &&
-  cp -f "$mod_path/nvapi64-proxy.dll" "$exe_folder_path" &&
   cp -f "$mod_path/nvngx-wrapper.dll" "$exe_folder_path" ||
   error_exit "Couldn't copy DLSS Enabler files!"
+
+  cp -f "$mod_path/nvapi64-proxy.dll" "$exe_folder_path" 2>/dev/null
 
   cp -f "$mod_path/_nvngx.dll" "$exe_folder_path" ||
   error_exit "Couldn't copy _nvngx.dll!"

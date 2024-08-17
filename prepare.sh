@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 mod_path="$HOME/fgmod"
 nvidiaver=555.52.04
-enablerver=3.01.000.0-beta11
+enablerver=3.01.000.0
 # standalone makes use of fgmod.sh and fgmod-uninstaller.sh from the working directory
 # To make it fully standalone with files being installed to pwd, set standalone=1 and mod_path=.
 standalone=0
@@ -54,6 +54,7 @@ cp -f NVIDIA-Linux-x86_64-$nvidiaver/LICENSE LICENSE
 chmod +r _nvngx.dll
 rm -rf innoextract-1.9-linux NVIDIA-Linux-x86_64-$nvidiaver innoextract-1.9-linux.tar.xz dlss-enabler-setup-$enablerver.exe NVIDIA-Linux-x86_64-$nvidiaver.run
 rm -rf plugins dlss-enabler-fsr.dll dlss-enabler-xess.dll version.dll winmm.dll
+[[ -f "$(which nvidia-smi)" ]] && rm -rf nvapi64-proxy.dll
 
 sed -i 's|mod_path="/usr/share/fgmod"|mod_path="'"$mod_path"'"|g' fgmod
 chmod +x fgmod
