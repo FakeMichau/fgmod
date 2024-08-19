@@ -6,21 +6,23 @@ if [[ $(pwd) == "$mod_path" ]]; then
     rm -r $mod_path
 else
     rm "dlss-enabler.dll"
-    rm "dlss-enabler.log"
     rm "dxgi.dll"
-    rm "nvapi64-proxy.dll" 2>/dev/null
     rm "nvngx-wrapper.dll"
     rm "_nvngx.dll"
     rm "dlssg_to_fsr3_amd_is_better.dll"
     rm "dlssg_to_fsr3_amd_is_better-3.0.dll"
-    rm "dlssg_to_fsr3.log"
     rm "dlss-enabler-upscaler.dll"
-    rm "OptiScaler.log" 2>/dev/null
     rm "nvngx.ini"
     rm "libxess.dll"
     rm "d3dcompiler_47.dll"
     rm "amd_fidelityfx_dx12.dll"
     rm "amd_fidelityfx_vk.dll"
+
+    # Those files might not exist
+    rm "nvapi64-proxy.dll" 2>/dev/null
+    rm "OptiScaler.log" 2>/dev/null
+    rm "dlss-enabler.log" 2>/dev/null
+    rm "dlssg_to_fsr3.log" 2>/dev/null
 
     # Restore files the game might've shipped with
     mv -f "libxess.dll.b" "libxess.dll" 2>/dev/null
