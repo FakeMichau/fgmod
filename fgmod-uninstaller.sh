@@ -19,6 +19,8 @@ else
     rm "nvngx.ini"
     rm "libxess.dll"
     rm "d3dcompiler_47.dll"
+    rm "amd_fidelityfx_dx12.dll"
+    rm "amd_fidelityfx_vk.dll"
 
     # Restore files the game might've shipped with
     mv -f "libxess.dll.b" "libxess.dll" 2>/dev/null
