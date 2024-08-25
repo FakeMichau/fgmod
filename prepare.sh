@@ -2,7 +2,7 @@
 
 mod_path="$HOME/fgmod"
 nvidiaver=555.52.04
-enablerver=3.01.000.0
+enablerver=3.01.001.0-beta11
 # standalone makes use of fgmod.sh and fgmod-uninstaller.sh from the working directory
 # To make it fully standalone with files being installed to pwd, set standalone=1 and mod_path=.
 standalone=0
@@ -28,14 +28,14 @@ cd "$mod_path" || exit 1
 curl -OLf https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/$enablerver/dlss-enabler-setup-$enablerver.exe
 curl -OLf https://download.nvidia.com/XFree86/Linux-x86_64/$nvidiaver/NVIDIA-Linux-x86_64-$nvidiaver.run
 curl -OLf https://raw.githubusercontent.com/mozilla/fxc2/master/dll/d3dcompiler_47.dll
-curl -OLf https://constexpr.org/innoextract/files/innoextract-1.9-linux.tar.xz
+curl -OLf https://github.com/FakeMichau/innoextract/releases/download/6.3.0/innoextract
 [[ $standalone -eq 0 ]] && curl -o fgmod -Lf https://raw.githubusercontent.com/FakeMichau/fgmod/main/fgmod.sh
 [[ $standalone -eq 0 ]] && curl -OL https://raw.githubusercontent.com/FakeMichau/fgmod/main/fgmod-uninstaller.sh
 
 [[ ! -f dlss-enabler-setup-$enablerver.exe ]] || 
 [[ ! -f NVIDIA-Linux-x86_64-$nvidiaver.run ]] || 
 [[ ! -f d3dcompiler_47.dll ]] || 
-[[ ! -f innoextract-1.9-linux.tar.xz ]] || 
+[[ ! -f innoextract ]] || 
 [[ ! -f fgmod ]] || 
 [[ ! -f fgmod-uninstaller.sh ]] && exit 1
 
@@ -43,8 +43,8 @@ curl -OLf https://constexpr.org/innoextract/files/innoextract-1.9-linux.tar.xz
 chmod +x NVIDIA-Linux-x86_64-$nvidiaver.run
 ./NVIDIA-Linux-x86_64-$nvidiaver.run -x
 
-tar xf innoextract-1.9-linux.tar.xz
-innoextract-1.9-linux/bin/amd64/innoextract dlss-enabler-setup-$enablerver.exe
+chmod +x innoextract
+./innoextract dlss-enabler-setup-$enablerver.exe
 
 # Prepare mod files
 mv app/* .
@@ -52,7 +52,7 @@ rm -r app
 cp -f NVIDIA-Linux-x86_64-$nvidiaver/nvngx.dll _nvngx.dll
 cp -f NVIDIA-Linux-x86_64-$nvidiaver/LICENSE LICENSE
 chmod +r _nvngx.dll
-rm -rf innoextract-1.9-linux NVIDIA-Linux-x86_64-$nvidiaver innoextract-1.9-linux.tar.xz dlss-enabler-setup-$enablerver.exe NVIDIA-Linux-x86_64-$nvidiaver.run
+rm -rf innoextract NVIDIA-Linux-x86_64-$nvidiaver dlss-enabler-setup-$enablerver.exe NVIDIA-Linux-x86_64-$nvidiaver.run
 rm -rf plugins dlss-enabler-fsr.dll dlss-enabler-xess.dll version.dll winmm.dll
 [[ -f "$(which nvidia-smi)" ]] && rm -rf nvapi64-proxy.dll
 
