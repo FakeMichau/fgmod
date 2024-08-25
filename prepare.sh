@@ -54,7 +54,7 @@ cp -f NVIDIA-Linux-x86_64-$nvidiaver/LICENSE LICENSE
 chmod +r _nvngx.dll
 rm -rf innoextract NVIDIA-Linux-x86_64-$nvidiaver dlss-enabler-setup-$enablerver.exe NVIDIA-Linux-x86_64-$nvidiaver.run
 rm -rf plugins dlss-enabler-fsr.dll dlss-enabler-xess.dll version.dll winmm.dll
-[[ -f "$(which nvidia-smi)" ]] && rm -rf nvapi64-proxy.dll
+[[ -f "$(which nvidia-smi 2>/dev/null)" ]] && rm -rf nvapi64-proxy.dll
 
 sed -i 's|mod_path="/usr/share/fgmod"|mod_path="'"$mod_path"'"|g' fgmod
 chmod +x fgmod
