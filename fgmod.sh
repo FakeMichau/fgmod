@@ -60,8 +60,8 @@ if [[ -d $exe_folder_path ]]; then
 
   original_dlls=("libxess.dll" "d3dcompiler_47.dll" "amd_fidelityfx_dx12.dll" "amd_fidelityfx_vk.dll")
 
-  # Assume that the mod is not installed when dlssg_to_fsr3_amd_is_better.dll is not present
-  if [[ ! -f "$exe_folder_path/dlssg_to_fsr3_amd_is_better.dll" ]]; then
+  # Assume that the mod is not installed when dlss-enabler.dll is not present
+  if [[ ! -f "$exe_folder_path/dlss-enabler.dll" ]]; then
     for dll in "${original_dlls[@]}"; do
       if [[ ! -f "$exe_folder_path/${dll}.b" ]]; then
         mv -f "$exe_folder_path/$dll" "$exe_folder_path/${dll}.b" 2>/dev/null
