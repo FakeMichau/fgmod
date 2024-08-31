@@ -3,7 +3,7 @@ This mod is an installation script for Artur's [DLSS Enabler](https://github.com
 
 ## Installation
 ```sh
-curl https://raw.githubusercontent.com/FakeMichau/fgmod/main/prepare.sh | sh --
+curl https://raw.githubusercontent.com/FakeMichau/fgmod/main/prepare.sh | bash --
 ```
 This will create a folder called ``fgmod`` in your home directory with a wrapper ``fgmod`` inside of it.
 
