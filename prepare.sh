@@ -50,10 +50,10 @@ chmod +x innoextract
 mv app/* .
 rm -r app
 cp -f NVIDIA-Linux-x86_64-$nvidiaver/nvngx.dll _nvngx.dll
-cp -f NVIDIA-Linux-x86_64-$nvidiaver/LICENSE LICENSE
+cp -f NVIDIA-Linux-x86_64-$nvidiaver/LICENSE "licenses/LICENSE (NVIDIA driver)"
 chmod +r _nvngx.dll
 rm -rf innoextract NVIDIA-Linux-x86_64-$nvidiaver dlss-enabler-setup-$enablerver.exe NVIDIA-Linux-x86_64-$nvidiaver.run
-rm -rf plugins dlss-enabler-fsr.dll dlss-enabler-xess.dll version.dll winmm.dll
+rm -rf plugins dlss-enabler-fsr.dll dlss-enabler-xess.dll version.dll winmm.dll nvngx.dll dlss-finder.exe dlss-enabler.log dlssg_to_fsr3.log "LICENSE (DLSSG to FSR3 mod).txt" "Readme (DLSS enabler).txt" "READ ME (DLSSG to FSR3 mod).txt" "XESS LICENSE.pdf"
 [[ -f "$(which nvidia-smi 2>/dev/null)" ]] && rm -rf nvapi64-proxy.dll
 
 sed -i 's|mod_path="/usr/share/fgmod"|mod_path="'"$mod_path"'"|g' fgmod
