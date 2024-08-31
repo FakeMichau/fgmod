@@ -77,6 +77,7 @@ if [[ -d $exe_folder_path ]]; then
   cp -f "$mod_path/nvngx-wrapper.dll" "$exe_folder_path" ||
   error_exit "Couldn't copy DLSS Enabler files!"
 
+  # File is not preset on Nvidia installs so will fail on some setups on purpose
   cp -f "$mod_path/nvapi64-proxy.dll" "$exe_folder_path" 2>/dev/null
 
   cp -f "$mod_path/_nvngx.dll" "$exe_folder_path" ||
@@ -86,13 +87,13 @@ if [[ -d $exe_folder_path ]]; then
   cp -f "$mod_path/dlssg_to_fsr3_amd_is_better-3.0.dll" "$exe_folder_path" ||
   error_exit "Couldn't copy dlssg-to-fsr3!"
 
-  cp -f "$mod_path/dlss-enabler-upscaler.dll" "$exe_folder_path"
-  cp -f "$mod_path/amd_fidelityfx_dx12.dll"   "$exe_folder_path"
-  cp -f "$mod_path/amd_fidelityfx_vk.dll"     "$exe_folder_path"
-  cp -f "$mod_path/libxess.dll"               "$exe_folder_path"
-  cp -f "$mod_path/d3dcompiler_47.dll"        "$exe_folder_path"
+  cp -f "$mod_path/dlss-enabler-upscaler.dll" "$exe_folder_path" &&
+  cp -f "$mod_path/amd_fidelityfx_dx12.dll"   "$exe_folder_path" &&
+  cp -f "$mod_path/amd_fidelityfx_vk.dll"     "$exe_folder_path" &&
+  cp -f "$mod_path/libxess.dll"               "$exe_folder_path" &&
+  cp -f "$mod_path/d3dcompiler_47.dll"        "$exe_folder_path" ||
+  error_exit "Couldn't copy Optiscaler files!"
   cp -n "$mod_path/nvngx.ini"                 "$exe_folder_path"
-  # error_exit "Couldn't copy Optiscaler files!"
 else
   error_exit "Path doesn't exist!"
 fi
