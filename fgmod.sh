@@ -62,6 +62,7 @@ if [[ -d $exe_folder_path ]]; then
 
   # Assume that the mod is not installed when dlss-enabler.dll is not present
   if [[ ! -f "$exe_folder_path/dlss-enabler.dll" ]]; then
+    [[ -f "$exe_folder_path/dxgi.dll" ]] && error_exit 'dxgi.dll is already present in the game folder!\nThis script uses dxgi.dll to load required files.\nRemove the mod using dxgi.dll or install DLSS Enabler manually.'
     for dll in "${original_dlls[@]}"; do
       if [[ ! -f "$exe_folder_path/${dll}.b" ]]; then
         mv -f "$exe_folder_path/$dll" "$exe_folder_path/${dll}.b" 2>/dev/null
