@@ -2,6 +2,7 @@
 This mod is an installation script for Artur's [DLSS Enabler](https://github.com/artur-graniszewski/DLSS-Enabler) which itself is a combination of multiple other projects.
 
 ## Installation
+Run this command in the terminal
 ```sh
 curl https://raw.githubusercontent.com/FakeMichau/fgmod/main/prepare.sh | bash --
 ```
