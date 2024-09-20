@@ -23,6 +23,7 @@ else
     rm "OptiScaler.log" 2>/dev/null
     rm "dlss-enabler.log" 2>/dev/null
     rm "dlssg_to_fsr3.log" 2>/dev/null
+    rm "fakenvapi.log" 2>/dev/null
 
     # Restore files the game might've shipped with
     mv -f "libxess.dll.b" "libxess.dll" 2>/dev/null
