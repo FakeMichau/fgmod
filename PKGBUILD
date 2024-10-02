@@ -1,19 +1,19 @@
 pkgname=fgmod
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Makes \"DLSS\" Enabler easy to use on Linux with Proton"
 arch=('x86_64')
 license=('custom')
 depends=('zenity')
 _nvidiaver=555.52.04
-_enablerver=3.01.001.0-beta11
+_enablerver=3.02.000.0
 source=("https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/$_enablerver/dlss-enabler-setup-$_enablerver.exe"
         "https://download.nvidia.com/XFree86/Linux-x86_64/$_nvidiaver/NVIDIA-Linux-x86_64-$_nvidiaver.run"
         "https://raw.githubusercontent.com/mozilla/fxc2/master/dll/d3dcompiler_47.dll" # from winetricks
         "https://github.com/FakeMichau/innoextract/releases/download/6.3.0/innoextract"
         "fgmod.sh"
         "fgmod-uninstaller.sh")
-sha256sums=('4d045e20efe19da8d6efc0fea16ad425e57081493904bcc248a196a8e0ce6415'
+sha256sums=('6f373a7c198ac0f7e9a6a4a5250783c265e8390059171cead5595b5a0801dc1f'
             '9d53ae6dbef32ae95786ec7d02bb944d5050c1c70516e6065ab5356626a44402'
             '4432bbd1a390874f3f0a503d45cc48d346abc3a8c0213c289f4b615bf0ee84f3'
             'SKIP'
