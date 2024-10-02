@@ -96,7 +96,9 @@ if [[ -d $exe_folder_path ]]; then
   cp -f "$mod_path/libxess.dll"               "$exe_folder_path" &&
   cp -f "$mod_path/d3dcompiler_47.dll"        "$exe_folder_path" ||
   error_exit "Couldn't copy Optiscaler files!"
+
   cp -n "$mod_path/nvngx.ini"                 "$exe_folder_path"
+  cp -n "$mod_path/fakenvapi.ini"             "$exe_folder_path"
 else
   error_exit "Path doesn't exist!"
 fi
