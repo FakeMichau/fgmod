@@ -80,7 +80,7 @@ if [[ -d $exe_folder_path ]]; then
   error_exit "Couldn't copy DLSS Enabler files!"
 
   # File is not preset on Nvidia installs so will fail on some setups on purpose
-  cp -f "$mod_path/nvapi64-proxy.dll" "$exe_folder_path" 2>/dev/null
+  cp -f "$mod_path/nvapi64.dll" "$exe_folder_path" 2>/dev/null
 
   cp -f "$mod_path/_nvngx.dll" "$exe_folder_path" ||
   error_exit "Couldn't copy _nvngx.dll!"
