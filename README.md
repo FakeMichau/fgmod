@@ -15,7 +15,7 @@ After running the script, you will be given the exact command. In case you misse
 
 For Steam, add this to the launch options ``/home/USERNAME/fgmod/fgmod %COMMAND%``  
 For Heroic, add this as a new wrapper ``/home/USERNAME/fgmod/fgmod``  
-For Bottles, add this this as pre-run script in the launch options ``/home/USERNAME/fgmod/fgmod``
+For Bottles, add this this as pre-run script in the launch options ``/home/USERNAME/fgmod/fgmod``  
 Just replace USERNAME with your own.
 
 ### AUR package
