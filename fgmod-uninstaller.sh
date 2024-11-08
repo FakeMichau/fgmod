@@ -20,6 +20,7 @@ else
 
     # Those files might not exist
     rm "nvapi64.dll" 2>/dev/null
+    rm "fakenvapi.ini" 2>/dev/null
     rm "OptiScaler.log" 2>/dev/null
     rm "dlss-enabler.log" 2>/dev/null
     rm "dlssg_to_fsr3.log" 2>/dev/null
