@@ -19,6 +19,9 @@ if [[ -d "$mod_path" ]] && [[ ! $mod_path == . ]]; then
     fi
 fi
 
+# In case script gets ran from a different directory
+cd $(dirname "$0")
+
 mkdir "$mod_path"
 if [[ ! $standalone -eq 0 ]]; then
     [[ -f fgmod.sh ]] && cp fgmod.sh "$mod_path/fgmod" || exit 1
@@ -66,6 +69,15 @@ chmod +x fgmod
 sed -i 's|mod_path="/usr/share/fgmod"|mod_path="'"$mod_path"'"|g' fgmod-uninstaller.sh
 chmod +x fgmod-uninstaller.sh
 
+echo ""
+
+# Flatpak doesn't have access to home by default
+if flatpak list | grep "com.valvesoftware.Steam" 1>/dev/null; then
+    echo Flatpak version of Steam detected, adding access to fgmod\'s folder
+    echo Please restart Steam!
+    flatpak override --user --filesystem="$mod_path" com.valvesoftware.Steam
+fi
+
 echo All done!
-echo For Steam, add this to the launch options: "$PWD/fgmod" %COMMAND%
-echo For Heroic, add this as a new wrapper: "$PWD/fgmod"
+echo For Steam, add this to the launch options: "$mod_path/fgmod" %COMMAND%
+echo For Heroic, add this as a new wrapper: "$mod_path/fgmod"
