@@ -13,20 +13,20 @@ Before running it, at least take a look at prepare.sh and fgmod.sh, piping stuff
 ## Usage
 After running the script, you will be given the exact command. In case you missed it, look below.
 
-For Steam, add this to the launch options ``/home/USERNAME/fgmod/fgmod %COMMAND%``  
-For Heroic, add this as a new wrapper ``/home/USERNAME/fgmod/fgmod``  
-For Bottles, add this this as pre-run script in the launch options ``/home/USERNAME/fgmod/fgmod``  
-Just replace USERNAME with your own.
+For Steam, add this to the launch options: ``$HOME/fgmod/fgmod %COMMAND%``  
+For Lutris, add this to the Command Prefix in the System Options tab: ``$HOME/fgmod/fgmod``  
+For Heroic, add this as a new wrapper: ``$HOME/fgmod/fgmod``  
+For Bottles, add this this as pre-run script in the launch options: ``$HOME/fgmod/fgmod``  
 
 ### AUR package
 There is PKGBUILD, download that and fgmod.sh, you know what to do with it - ``makepkg``. Usage is simpler, just add ``fgmod`` as a wrapper.
 
 ## Uninstallation
 ### 1. For a single game
-- Remove ``/home/USERNAME/fgmod/fgmod`` from the launch options
+- Remove ``$HOME/fgmod/fgmod`` from the launch options
 - Run ``fgmod-uninstaller.sh`` found in the game folder, it will not always be the main folder
 
 
 ### 2. The whole fgmod
-- Remove the ``/home/USERNAME/fgmod`` folder
+- Remove the ``$HOME/fgmod`` folder
 - Do the steps for a single game for every game you've used fgmod with 
