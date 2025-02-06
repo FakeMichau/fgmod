@@ -13,10 +13,11 @@ Before running it, at least take a look at prepare.sh and fgmod.sh, piping stuff
 ## Usage
 After running the script, you will be given the exact command. In case you missed it, look below.
 
+Replace USERNAME with your own.  
 For Steam, add this to the launch options ``/home/USERNAME/fgmod/fgmod %COMMAND%``  
 For Heroic, add this as a new wrapper ``/home/USERNAME/fgmod/fgmod``  
 For Bottles, add this this as pre-run script in the launch options ``/home/USERNAME/fgmod/fgmod``  
-Just replace USERNAME with your own.
+For Lutris, go to system options then add this to command prefix  ``/home/USERNAME/fgmod/fgmod``  
 
 ### AUR package
 There is PKGBUILD, download that and fgmod.sh, you know what to do with it - ``makepkg``. Usage is simpler, just add ``fgmod`` as a wrapper.
